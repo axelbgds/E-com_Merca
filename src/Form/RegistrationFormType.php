@@ -25,31 +25,31 @@ class RegistrationFormType extends AbstractType
                 ],
                 'label' => 'E-mail'
             ])
-            ->add('lastname',TextType::class, [
+            ->add('lastname', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
                 'label' => 'Nom'
             ])
-            ->add('firstname',TextType::class, [
+            ->add('firstname', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
                 'label' => 'Prenom'
             ])
-            ->add('adress',TextType::class, [
+            ->add('address', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
                 'label' => 'Adresse'
             ])
-            ->add('zipcode',TextType::class, [
+            ->add('zipcode', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
                 'label' => 'Code postal'
             ])
-            ->add('city',TextType::class, [
+            ->add('city', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
@@ -83,8 +83,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
