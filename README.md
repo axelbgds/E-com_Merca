@@ -31,9 +31,6 @@ This project aims to create an online shopping platform for a store called Merca
 5. Apply migrations: `php bin/console doctrine:migrations:migrate`
 6. Start the development server: `symfony serve`
 
-## Author
-Author's Name
-
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
