@@ -3,9 +3,26 @@
 {% block body %}
 	<main class="container">
 		<section class="row">
-			<div class="col-12">
-				<h1>Mercadona</h1>
+			<div class="col-md-6 col-12">
+				<h1>Qui sommes nous ?</h1>
 				<p>Plateforme d'e-commerce Mercadona : Votre destination en ligne pour faire des achats en toute simplicité avec une démarche écoresponsable !</p>
+				<p>
+					Chez Mercadona, nous sommes profondément engagés dans une démarche éco-responsable. Voici quelques-uns des principes clés de nos actions :
+				</p>
+				<ul>
+					<li>Approvisionnement responsable : Nous veillons à ce que nos produits proviennent de sources durables et respectueuses de l'environnement.</li>
+					<li>Réduction des déchets : Nous mettons en place des initiatives visant à réduire les déchets, que ce soit en favorisant le recyclage, en minimisant l'utilisation de matériaux d'emballage non durables.</li>
+				</ul>
+				<br>
+			</div>
+			<div class="col-md-6 col-12">
+				<div class="image-container float-md-right">
+					<img src="{{ asset('assets/img/eco_img.jpg') }}" alt="Image description" class="img-fluid">
+				</div>
+			</div>
+			<div class="col-12">
+				<h2>Notre Catalogue de produits :</h2>
+				<br>
 			</div>
 			{% for category in categories %}
 				{% if category.parent == null %}
@@ -15,14 +32,13 @@
 						</h2>
 					</div>
 				{% else %}
-					<div class="col-4">
+					<div class="col-md-4 col-12">
 						<div class="card h-100">
 							<div class="card-body">
 								<h3 class="card-title">{{ category.name }}</h3>
 								<a href="{{ path('categories_list', {slug: category.slug}) }}" class="btn btn-primary">Voir les produits</a>
 							</div>
 						</div>
-						<a href="#"></a>
 					</div>
 				{% endif %}
 			{% endfor %}

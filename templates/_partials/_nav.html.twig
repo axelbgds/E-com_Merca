@@ -1,6 +1,18 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="{{ path('main') }}">e-commerce</a>
+	<div
+		class="container-fluid">
+		{# <div class="navbar-brand" href="{{ path('main') }}">
+													e-commerce
+												</div> #}
+		<div class="navbar-brand" href="{{ path('main') }}">
+			<div class="logo">
+				<a href="{{ path('main') }}">
+					<img src="{{ asset('assets/img/mercadona_logo.svg') }}" alt="Logo">
+				</a>
+			</div>
+		</div>
+
+
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -10,27 +22,27 @@
 					<a class="nav-link active" aria-current="page" href="{{ path('main') }}">Accueil</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Link</a>
+					<a class="nav-link" href="#">Derniere chance</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Dropdown
+						En savoir plus
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Notre histoire</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Nos objectifs</a>
 						</li>
 						<li><hr class="dropdown-divider"></li>
 						<li>
-							<a class="dropdown-item" href="#">Something else here</a>
+							<a class="dropdown-item" href="#">Nous rejoindre</a>
 						</li>
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link disabled">Disabled</a>
+					<a class="nav-link disabled">Newsletter</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -41,13 +53,14 @@
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('app_logout') }}">Me deconnecter</a>
 					</li>
+				{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_register') }}">M'inscrire</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_login') }}">Me connecter</a>
+					</li>
 				{% endif %}
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_register') }}">M'inscrire</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_login') }}">Me connecter</a>
-				</li>
 			</ul>
 		</div>
 	</div>

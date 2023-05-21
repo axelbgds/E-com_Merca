@@ -7,21 +7,23 @@
 
 {% block body %}
 	<main class="container">
-		<div class="col-12">
-			<h1>Liste des produits de la categorie
-				{{ category.name}}</h1>
-		</div>
-		{% for product in products %}
-			<div class="col-3 mb-3">
-				<div class="card h-100">
-					<div class="card-body">
-						<h2 class="card title">{{product.name}}</h2>
-						<p class="card-text">{{product.description}}</p>
-						<a href="" class="btn btn-pirmary">Voir les details</a>
+		<section class="row">
+			<div class="col-12">
+				<h1>Liste des produits de la categorie
+					{{ category.name}}</h1>
+			</div>
+			{% for product in products %}
+				<div class="col-3 mb-3">
+					<div class="card h-100">
+						<div class="card-body">
+							<h2 class="card title">{{product.name}}</h2>
+							<p class="card-text">{{product.description}}</p>
+							<a href="{{ path('products_details', {"slug": product.slug}) }}" class="btn btn-secondary">Voir les details</a>
+						</div>
 					</div>
 				</div>
-			</div>
 
-		{% endfor %}
+			{% endfor %}
+		</section>
 	</main>
 {% endblock %}
