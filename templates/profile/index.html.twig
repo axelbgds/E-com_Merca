@@ -1,38 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfileController!
+{% block title %}Profil
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
+	<div class="container mt-5">
+		<div class="mt-5">
+			<h1 class="mt-5">Bienvenue sur votre profil,
+				{{ app.user.lastname }}
+				{{ app.user.firstname }}
+				!</h1>
 
-	<div class="example-wrapper">
-		<h1>Hello
-			{{ controller_name }}! ✅</h1>
+			{% if is_granted('ROLE_ADMIN') %}
+				<a href="{{ path('admin_index') }}" class="btn custom-bg-color">Espace Admin</a>
+			{% endif %}
 
-		This friendly message is coming from:
-		<ul>
-			<li>Your controller at
-				<code>
-					<a href="{{ '/home/benoit/Documents/Demos/ecommerce-sf6/src/Controller/ProfileController.php'|file_link(0) }}">src/Controller/ProfileController.php</a>
-				</code>
-			</li>
-			<li>Your template at
-				<code>
-					<a href="{{ '/home/benoit/Documents/Demos/ecommerce-sf6/templates/profile/index.html.twig'|file_link(0) }}">templates/profile/index.html.twig</a>
-				</code>
-			</li>
-		</ul>
+			<h2 class="mt-5">Vos commandes :</h2>
+			{% if app.user.orders is empty %}
+				<p>Pour le moment, vous n'avez aucune commande !</p>
+			{% else %}
+				<ul>
+					{% for order in app.user.orders %}
+						<li>{{ order.reference }}
+							-
+							{{ order.created_at|date('d/m/Y') }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+
+
+		</div>
 	</div>
+
 {% endblock %}

@@ -1,0 +1,42 @@
+<div class="mt-5">
+	{{ form_start(productForm) }}
+	<div class="form-group">
+		{{ form_label(productForm.name) }}
+		{{ form_widget(productForm.name, {'attr': {'class': 'form-control'}}) }}
+	</div>
+	<div class="form-group">
+		{{ form_label(productForm.description) }}
+		{{ form_widget(productForm.description, {'attr': {'class': 'form-control'}}) }}
+	</div>
+	<div class="form-group">
+		{{ form_label(productForm.categories) }}
+		{{ form_widget(productForm.categories, {'attr': {'class': 'form-control'}}) }}
+	</div>
+	<div class="form-group">
+		{{ form_label(productForm.price) }}
+		{{ form_widget(productForm.price, {'attr': {'class': 'form-control'}}) }}
+	</div>
+	<div class="form-group">
+		{{ form_label(productForm.stock) }}
+		{{ form_widget(productForm.stock, {'attr': {'class': 'form-control'}}) }}
+	</div>
+
+	{# On affiche les images si on est en édition #}
+	{% if app.request.attributes.get('_route') == 'admin_products_edit' %}
+		<h2>Images</h2>
+		{% for image in product.images %}
+			<div>
+				<img src="{{ asset('assets/uploads/products/mini/300x300-' ~ image.name ) }}" alt="Image" width="150">
+				<a href="{{ path('admin_products_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+			</div>
+		{% endfor %}
+	{% endif %}
+
+	<div class="form-group">
+		{{ form_label(productForm.images) }}
+		{{ form_widget(productForm.images, {'attr': {'class': 'form-control'}}) }}
+	</div>
+
+	<button type="submit" class="btn custom-bg-color mt-5">{{ button_label|default('Ajouter') }}</button>
+	{{ form_end(productForm) }}
+</div>

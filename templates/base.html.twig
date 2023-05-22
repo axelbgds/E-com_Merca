@@ -7,7 +7,7 @@
 			{% endblock %}
 			- Site Mercadona
 		</title>
-		{# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>"> #}
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
 		<meta
 		name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,13 +21,21 @@
 		{% block javascripts %}{% endblock %}
 		<script src="{{ asset('assets/js/scripts.js') }}" defer></script>
 	</head>
-	<body>
+	<body class="d-flex flex-column min-vh-100">
 
 		{% include "_partials/_nav.html.twig" %}
 
+		{% block adminnav %}{% endblock %}
+
+		{% if error is defined and error is not null %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
 		{% block body %}{% endblock %}
 
-		{% include "_partials/_footer.html.twig" %}
+		<footer class="mt-auto">
+			{% include "_partials/_footer.html.twig" %}
+		</footer>
 
 	</body>
 </html>
