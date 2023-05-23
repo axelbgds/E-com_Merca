@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modifier une promotion
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="row mt-5">
+			<aside class="col-10 border border-light bg-white p-2">
+				{% include "_partials/_adminnav.html.twig" %}
+			</aside>
+			<main class="container">
+				<section class="row">
+					<div class="col-12">
+						<h1>Modifier une promotion</h1>
+						{% include "admin/promotions/_form.html.twig" with {'button_label': 'Modifier'} %}
+					</div>
+				</section>
+			</main>
+		</div>
+	</div>
+{% endblock %}

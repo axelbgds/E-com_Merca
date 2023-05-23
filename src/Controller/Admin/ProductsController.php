@@ -55,7 +55,7 @@ class ProductsController extends AbstractController
     #[Route('/edition/{id}', name: 'edit')]
     public function edit(Products $product, Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response
     {
-        $this->denyAccessUnlessGranted('PRODUCT_EDIT', $product);
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', $product);
         $productForm = $this->createForm(ProductsFormType::class, $product);
         $productForm->handleRequest($request);
 

@@ -1,0 +1,24 @@
+{{ form_start(promotionForm) }}
+<div class="form-group">
+	{{ form_label(promotionForm.name) }}
+	{{ form_widget(promotionForm.name, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+	{{ form_label(promotionForm.promotion_disc) }}
+	{{ form_widget(promotionForm.promotion_disc, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+	{{ form_label(promotionForm.startDate) }}
+	{{ form_widget(promotionForm.startDate, {'attr': {'class': 'form-control js-datepicker'}}) }}
+</div>
+<div class="form-group">
+	{{ form_label(promotionForm.endDate) }}
+	{{ form_widget(promotionForm.endDate, {'attr': {'class': 'form-control js-datepicker'}}) }}
+</div>
+<div class="form-group">
+	{{ form_label(promotionForm.products) }}
+	{{ form_widget(promotionForm.products, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<button type="submit" class="btn custom-bg-color mt-5">{{ button_label|default('Ajouter') }}</button>
+{{ form_end(promotionForm) }}

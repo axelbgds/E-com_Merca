@@ -43,6 +43,9 @@ class Products
     #[ORM\OneToMany(mappedBy: 'products', targetEntity: OrdersDetails::class)]
     private Collection $ordersDetails;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Promotions $promotion = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -171,6 +174,18 @@ class Products
                 $ordersDetail->setProducts(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPromotion(): ?Promotions
+    {
+        return $this->promotion;
+    }
+
+    public function setPromotion(?Promotions $promotion): self
+    {
+        $this->promotion = $promotion;
 
         return $this;
     }

@@ -17,11 +17,12 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Photo</th>
+
 							<th>Nom</th>
 							<th>Prix</th>
 							<th>Stock</th>
 							<th>Catégorie</th>
+							<th>Promotion</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -29,11 +30,16 @@
 						{% for produit in produits %}
 							<tr>
 								<td>{{ produit.id }}</td>
-								{# <td><img src="{{ asset('assets/uploads/products/mini/300x300-' ~ produit.images[0].name ) }}" alt="{{ produit.name }}" class="img-thumbnail"></td> #}
 								<td>{{ produit.name }}</td>
 								<td>{{ produit.price / 100 }}</td>
 								<td>{{ produit.stock }}</td>
 								<td>{{ produit.categories.name }}</td>
+								<td>
+									{% if produit.promotion and produit.promotion.getPromotionDisc  %}
+										{{ produit.promotion.name }}
+										{{ produit.promotion.getPromotionDisc }}%
+									{% endif %}
+								</td>
 								<td>
 									<a href="{{ path('admin_products_edit', {id: produit.id})}}" class="btn btn-success">Modifier</a>
 								</td>

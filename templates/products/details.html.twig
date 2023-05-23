@@ -32,13 +32,26 @@
 				<p>Catégorie :
 					{{ product.categories.name }}</p>
 				<p>Prix :
-					{{ product.price / 100 }}
-					€</p>
-				{% if product.stock > 0 %}
-					<a href="#" class="btn btn-success">Ajouter au panier</a>
-				{% else %}
-					<p class="text-danger">Temporairement en rupture de stock</p>
-				{% endif %}
+					{# {% if product.isOnpromotions() %}
+																																																																																	<strong class="text-danger">{{ product.price / 100 }}€</strong>
+																																																																																{% else %} #}
+					{{ product.price / 100 }}€
+					{# {% endif %} #}
+					{% if product.stock > 0 %}
+						<a href="#" class="btn btn-success">Ajouter au panier</a>
+					{% else %}
+						<p class="text-danger">Temporairement en rupture de stock</p>
+					{% endif %}
+
+
+					{% if product.promotion and product.promotion.getPromotionDisc   %}
+						promo 		:
+						{{ product.promotion.name }}
+						{{ product.promotion.getPromotionDisc }}
+					{% endif %}
+
+
+				</p>
 			</div>
 		</section>
 	</main>

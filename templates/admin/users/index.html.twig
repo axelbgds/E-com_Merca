@@ -33,10 +33,10 @@
 									{% for role in user.roles %}
 										{% if role == "ROLE_ADMIN" %}
 											{% set name = "Administrateur" %}
-											{% set color = "danger" %}
-										{% elseif role == "ROLE_PRODUCT_ADMIN" %}
-											{% set name = "Admin produits" %}
 											{% set color = "warning" %}
+											{# {% elseif role == "OTHER_ROLE_ADMIN" %}
+																						{% set name = "Admin produits" %}
+																						{% set color = "warning" %} #}
 										{% else %}
 											{% set name = "Membre" %}
 											{% set color = "success" %}
